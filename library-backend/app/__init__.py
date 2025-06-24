@@ -8,6 +8,7 @@ from flask_jwt_extended import JWTManager # type: ignore
 from .routes import register_routes
 
 jwt = JWTManager()
+migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
@@ -15,7 +16,7 @@ def create_app():
 
     CORS(app)
     db.init_app(app)
-    Migrate(app, db)
+    migrate.init_app(app, db)
     jwt.init_app(app)
 
     register_routes(app)
