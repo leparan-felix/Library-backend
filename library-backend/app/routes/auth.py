@@ -23,3 +23,7 @@ def login():
         token = create_access_token(identity=user.id)
         return jsonify(access_token=token)
     return jsonify(message="Invalid credentials"), 401
+
+@auth_bp.route('/login/test', methods=['GET'])
+def get_login():
+    return {"message": "Login route works"}, 200
